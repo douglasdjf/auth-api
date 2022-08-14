@@ -27,7 +27,10 @@ trecho scripts:
     "start": "node app.js"
   }
 
-  ## Configuração SSL
+
+```
+
+## Configuração SSL
 
 é necessário configurar o sequelise adicionando no arquivo dbConfig.js a configuração :
 ```
