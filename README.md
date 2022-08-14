@@ -26,4 +26,42 @@ trecho scripts:
     "startDev": "nodemon app.js",
     "start": "node app.js"
   }
+
+  ## Configuração SSL
+
+é necessário configurar o sequelise adicionando no arquivo dbConfig.js a configuração :
+```
+  dialectOptions: { 
+    ssl: { 
+      require: true, 
+      rejectUnauthorized: false 
+    } 
+  }
+```
+
+trecho completo
+```
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
+  port: DB_PORT,
+  dialect: "postgres",
+  quoteIdentifiers: false,
+  dialectOptions: { 
+    ssl: { 
+      require: true, 
+      rejectUnauthorized: false 
+    } 
+  },
+  define: {
+    syncOnAssociation: true,
+    timestamps: false,
+    underscored: true,
+    underscoredAll: true,
+    freezeTableName: true,
+  },
+  pool: {
+    acquire: 180000,
+  },
+});
+
 ```
